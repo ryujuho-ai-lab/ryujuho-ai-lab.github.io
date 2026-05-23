@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="龍壽褒AI研究所は、中小企業・個人事業主に特化したAI導入・業務自動化の専門機関です。">
+<title>龍壽褒AI研究所 | AI × 業務自動化 × 中小企業支援</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #F7F9FC;
+    color: #1A2340;
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 2px solid #D8E2EF;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0D2151;
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: #B8952E; }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: #4A5568;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #0D2151; }
+  .nav-cta {
+    background-color: #0D2151;
+    color: #fff;
+    border: 2px solid #0D2151;
+    padding: 9px 22px;
+    font-size: 13px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background-color: #1A3A6B; border-color: #1A3A6B; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #EEF2FA 0%, #F7F9FC 55%, #EBF4FF 100%);
+    padding: 80px 5% 72px;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-inner { max-width: 680px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #E8EDF7;
+    border: 2px solid #a8bcd8;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 11px;
+    color: #1A3A6B;
+    letter-spacing: 0.1em;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  .badge-dot {
+    width: 7px; height: 7px;
+    background: #B8952E;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+  .hero h1 {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 4.5vw, 46px);
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: #0D2151;
+  }
+  .hero h1 em { color: #B8952E; font-style: normal; }
+  .hero-sub {
+    font-size: 16px;
+    color: #2D3748;
+    max-width: 560px;
+    margin-bottom: 36px;
+    font-weight: 400;
+    line-height: 1.9;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+  .btn-primary {
+    background-color: #0D2151;
+    color: #fff;
+    padding: 14px 30px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border: 3px solid #0D2151;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background-color: #1A3A6B; border-color: #1A3A6B; }
+  .btn-outline {
+    background-color: #fff;
+    color: #0D2151;
+    padding: 14px 30px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border: 3px solid #0D2151;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background-color: #0D2151; color: #fff; }
+  .hero-trust {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1.5px solid #c8d4e8;
+  }
+  .trust-item { display: flex; align-items: center; gap: 8px; }
+  .trust-item .ck { color: #B8952E; font-weight: 700; font-size: 15px; }
+  .trust-item span { font-size: 13px; color: #2D3748; }
+
+  /* ===== SECTION BASE ===== */
+  .section { padding: 72px 5%; }
+  .section-tag {
+    font-size: 11px;
+    color: #B8952E;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 700;
+    line-height: 1.45;
+    color: #0D2151;
+  }
+  .divider { width: 36px; height: 2px; background: #B8952E; margin: 16px 0; }
+  .section-desc { font-size: 14px; color: #2D3748; line-height: 1.9; font-weight: 400; }
+
+  /* ===== PROBLEM ===== */
+  .problem { background: #fff; }
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .pain-card {
+    background: #F7F9FC;
+    border: 1.5px solid #D8E2EF;
+    border-left: 4px solid #B8952E;
+    border-radius: 8px;
+    padding: 22px;
+  }
+  .pain-card .q {
+    font-size: 11px;
+    font-weight: 700;
+    color: #B8952E;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+  .pain-card p { font-size: 14px; color: #2D3748; line-height: 1.8; font-weight: 400; }
+
+  /* ===== ABOUT ===== */
+  .about { background: #0D2151; }
+  .about .section-tag { color: #B8952E; }
+  .about .section-title { color: #fff; }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+    margin-top: 8px;
+  }
+  .about-text p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.68);
+    line-height: 1.9;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .skills-label {
+    font-size: 12px;
+    color: #B8952E;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .skill-list { display: flex; flex-direction: column; gap: 10px; }
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid #B8952E;
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .skill-item .ck { color: #B8952E; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .skill-item span { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 400; }
+
+  /* ===== SERVICES ===== */
+  .services { background: #fff; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+    margin-top: 36px;
+  }
+  .service-card {
+    background: #fff;
+    border: 2px solid #D8E2EF;
+    border-radius: 10px;
+    padding: 28px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover { border-color: #0D2151; box-shadow: 0 4px 20px rgba(13,33,81,0.08); }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #0D2151, #B8952E);
+  }
+  .service-num {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 36px;
+    color: rgba(13,33,81,0.06);
+    font-weight: 900;
+    position: absolute;
+    top: 12px; right: 14px;
+  }
+  .service-icon { font-size: 26px; margin-bottom: 12px; }
+  .service-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #0D2151; }
+  .service-card p { font-size: 13px; color: #2D3748; line-height: 1.8; font-weight: 400; }
+
+  /* ===== WHY US ===== */
+  .whyus { background: #F7F9FC; }
+  .reason-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .reason-card {
+    background: #fff;
+    border: 2px solid #D8E2EF;
+    border-radius: 8px;
+    padding: 26px 22px;
+  }
+  .reason-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .reason-num {
+    background: #E8EDF7;
+    color: #0D2151;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    font-weight: 700;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #a8bcd8;
+    flex-shrink: 0;
+  }
+  .reason-card h3 { font-size: 14px; font-weight: 700; color: #0D2151; }
+  .reason-card p { font-size: 13px; color: #2D3748; line-height: 1.8; font-weight: 400; }
+
+  /* ===== CONTACT ===== */
+  .contact { background: #fff; }
+  .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+  .contact-inner .section-title { margin-bottom: 8px; }
+  .contact-inner .section-desc { margin: 0 auto 32px; }
+  .contact-box {
+    background: #F7F9FC;
+    border: 2px solid #D8E2EF;
+    border-radius: 12px;
+    padding: 36px;
+    text-align: left;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { font-size: 13px; color: #4A5568; display: block; margin-bottom: 6px; font-weight: 500; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: #fff;
+    border: 2px solid #C8D4E8;
+    color: #1A2340;
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: 'Noto Sans JP', sans-serif;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: #0D2151; }
+  .form-group textarea { height: 110px; resize: vertical; }
+  .submit-btn {
+    width: 100%;
+    background-color: #0D2151;
+    color: #fff;
+    border: 3px solid #0D2151;
+    padding: 15px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    transition: background 0.2s;
+  }
+  .submit-btn:hover { background-color: #1A3A6B; border-color: #1A3A6B; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #0D2151;
+    padding: 36px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 2px solid rgba(184,149,46,0.5);
+  }
+  .footer-logo { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 700; color: #fff; }
+  .footer-logo span { color: #B8952E; }
+  footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .about-inner { grid-template-columns: 1fr; gap: 36px; }
+    .nav-links { display: none; }
+    .hero { min-height: auto; padding: 56px 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">龍壽褒<span>AI</span>研究所</div>
+  <ul class="nav-links">
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#about">研究所について</a></li>
+    <li><a href="#whyus">選ばれる理由</a></li>
+    <li><a href="#contact">料金・相談</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">無料相談する</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>AI × 業務自動化 × 中小企業支援
+    </div>
+    <h1>AIの力で、<em>あなたのビジネス</em>を<br>次のステージへ進める</h1>
+    <p class="hero-sub">龍壽褒AI研究所は、中小企業・個人事業主に特化したAI導入・業務自動化の専門機関です。難しいAI技術を、現場で使えるカタチに変えます。</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">無料相談を予約する →</button>
+      <button class="btn-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">サービスを見る</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="ck">✔</span><span>初回相談無料</span></div>
+      <div class="trust-item"><span class="ck">✔</span><span>完全オーダーメイド</span></div>
+      <div class="trust-item"><span class="ck">✔</span><span>導入後も伴走サポート</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section problem" id="problem">
+  <span class="section-tag">PROBLEM</span>
+  <h2 class="section-title">こんなお悩み、ありませんか？</h2>
+  <div class="divider"></div>
+  <p class="section-desc">多くの中小企業・個人事業主が「AIを使いたいけど、どうすればいいかわからない」という壁に直面しています。</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="q">PROBLEM 01</div>
+      <p>「AIを導入したいが、どこから始めればいいかわからない」</p>
+    </div>
+    <div class="pain-card">
+      <div class="q">PROBLEM 02</div>
+      <p>「大手向けのサービスしかなく、中小企業には敷居が高い」</p>
+    </div>
+    <div class="pain-card">
+      <div class="q">PROBLEM 03</div>
+      <p>「自社の業務に合ったAIツールが選べず、導入が進まない」</p>
+    </div>
+    <div class="pain-card">
+      <div class="q">PROBLEM 04</div>
+      <p>「IT人材がいないため、頼れる専門家が欲しい」</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <span class="section-tag">ABOUT US</span>
+  <div class="about-inner">
+    <div>
+      <h2 class="section-title">技術と現場をつなぐ<br>AIの専門パートナー</h2>
+      <div class="divider"></div>
+      <div class="about-text">
+        <p>龍壽褒AI研究所は、業務自動化・データ分析・管理システムを中心に、中小企業・個人事業主の現場課題を解決するAIソリューションを提供します。</p>
+        <p>「難しい技術は研究所が担う、現場は成果に集中する」をモットーに、導入から運用まで一貫して伴走します。</p>
+      </div>
+    </div>
+    <div>
+      <div class="skills-label">できること</div>
+      <div class="skill-list">
+        <!-- ▼ 増やすときはこのブロックをコピーして追加するだけ -->
+        <div class="skill-item"><span class="ck">✔</span><span>業務フロー自動化</span></div>
+        <div class="skill-item"><span class="ck">✔</span><span>データ収集・集計の仕組み化</span></div>
+        <div class="skill-item"><span class="ck">✔</span><span>管理システム構築</span></div>
+        <div class="skill-item"><span class="ck">✔</span><span>AI活用コンサルティング</span></div>
+        <div class="skill-item"><span class="ck">✔</span><span>トレーディングツール開発</span></div>
+        <div class="skill-item"><span class="ck">✔</span><span>Webシステム・LP制作</span></div>
+        <!-- ▲ ここまで -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <span class="section-tag">SERVICES</span>
+  <h2 class="section-title">4つの専門領域</h2>
+  <p class="section-desc" style="margin-top:8px">ビジネスの課題に合わせた4つのAI専門領域で、あらゆるフェーズをサポートします。</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🤖</div>
+      <h3>業務自動化 AI</h3>
+      <p>繰り返し業務・帳票処理・メール対応などをAIで自動化。人的コストを削減し、コア業務に集中できる環境を構築します。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">📊</div>
+      <h3>管理システム AI</h3>
+      <p>シフト管理・在庫管理・顧客管理など、現場に即した管理システムをAIで高度化。Google Workspace連携も対応。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">📈</div>
+      <h3>データ分析 AI</h3>
+      <p>売上・顧客データをAIで可視化・予測分析。意思決定のスピードと精度を飛躍的に向上させます。</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">💹</div>
+      <h3>トレーディング研究 AI</h3>
+      <p>MT4・FXを軸にしたAIシグナル開発・バックテスト・自動売買システムの研究・実装支援。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section whyus" id="whyus">
+  <span class="section-tag">WHY US</span>
+  <h2 class="section-title">選ばれる4つの理由</h2>
+  <div class="reason-grid">
+    <div class="reason-card">
+      <div class="reason-card-head"><div class="reason-num">01</div><h3>中小企業・個人事業主に特化</h3></div>
+      <p>小規模事業者の予算・体制に合わせた最適なAI導入を提案します。大手向けの高額パッケージは不要です。</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-card-head"><div class="reason-num">02</div><h3>現場課題からのオーダーメイド設計</h3></div>
+      <p>ヒアリングをもとに貴社の課題に特化したシステムをゼロから設計。既製品の押し付けはしません。</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-card-head"><div class="reason-num">03</div><h3>マルチAI連携による高品質開発</h3></div>
+      <p>複数のAIを組み合わせた独自の開発体制で、品質とスピードを両立します。</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-card-head"><div class="reason-num">04</div><h3>導入後の運用まで一貫サポート</h3></div>
+      <p>納品で終わりではなく、運用・改善・追加開発まで長期的にパートナーとして伴走します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="contact-inner">
+    <span class="section-tag">CONTACT</span>
+    <h2 class="section-title">まずは無料相談から</h2>
+    <p class="section-desc" style="margin-top:8px">AI導入に関するご質問・お見積もりはお気軽にどうぞ。48時間以内にご返信いたします。</p>
+    <div class="contact-box">
+      <div class="form-group">
+        <label>お名前 / 会社名</label>
+        <input type="text" placeholder="例）山田 太郎 / 株式会社〇〇">
+      </div>
+      <div class="form-group">
+        <label>メールアドレス</label>
+        <input type="email" placeholder="info@example.com">
+      </div>
+      <div class="form-group">
+        <label>ご相談内容</label>
+        <select>
+          <option>選択してください</option>
+          <option>業務自動化 AI</option>
+          <option>管理システム AI</option>
+          <option>データ分析 AI</option>
+          <option>トレーディング研究 AI</option>
+          <option>その他・まだ決まっていない</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>メッセージ（任意）</label>
+        <textarea placeholder="現在の課題や相談内容をご記入ください"></textarea>
+      </div>
+      <button class="submit-btn">無料相談を申し込む →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">龍壽褒<span>AI</span>研究所</div>
+  <p>© 2026 龍壽褒AI研究所 All rights reserved.</p>
+</footer>
+
+</body>
+</html>
