@@ -456,14 +456,12 @@
     <div>
       <div class="skills-label">できること</div>
       <div class="skill-list">
-        <!-- ▼ 増やすときはこのブロックをコピーして追加するだけ -->
         <div class="skill-item"><span class="ck">✔</span><span>業務フロー自動化</span></div>
         <div class="skill-item"><span class="ck">✔</span><span>データ収集・集計の仕組み化</span></div>
         <div class="skill-item"><span class="ck">✔</span><span>管理システム構築</span></div>
         <div class="skill-item"><span class="ck">✔</span><span>AI活用コンサルティング</span></div>
         <div class="skill-item"><span class="ck">✔</span><span>トレーディングツール開発</span></div>
         <div class="skill-item"><span class="ck">✔</span><span>Webシステム・LP制作</span></div>
-        <!-- ▲ ここまで -->
       </div>
     </div>
   </div>
@@ -532,32 +530,40 @@
     <span class="section-tag">CONTACT</span>
     <h2 class="section-title">まずは無料相談から</h2>
     <p class="section-desc" style="margin-top:8px">AI導入に関するご質問・お見積もりはお気軽にどうぞ。48時間以内にご返信いたします。</p>
-    <div class="contact-box">
+
+    <!-- ▼ Formspree対応フォーム -->
+    <form class="contact-box"
+          action="https://formspree.io/f/mgoqygpj"
+          method="POST">
+
       <div class="form-group">
         <label>お名前 / 会社名</label>
-        <input type="text" placeholder="例）山田 太郎 / 株式会社〇〇">
+        <input type="text" name="name" placeholder="例）山田 太郎 / 株式会社〇〇" required>
       </div>
       <div class="form-group">
         <label>メールアドレス</label>
-        <input type="email" placeholder="info@example.com">
+        <input type="email" name="email" placeholder="info@example.com" required>
       </div>
       <div class="form-group">
         <label>ご相談内容</label>
-        <select>
-          <option>選択してください</option>
-          <option>業務自動化 AI</option>
-          <option>管理システム AI</option>
-          <option>データ分析 AI</option>
-          <option>トレーディング研究 AI</option>
-          <option>その他・まだ決まっていない</option>
+        <select name="category">
+          <option value="">選択してください</option>
+          <option value="業務自動化AI">業務自動化 AI</option>
+          <option value="管理システムAI">管理システム AI</option>
+          <option value="データ分析AI">データ分析 AI</option>
+          <option value="トレーディング研究AI">トレーディング研究 AI</option>
+          <option value="その他">その他・まだ決まっていない</option>
         </select>
       </div>
       <div class="form-group">
         <label>メッセージ（任意）</label>
-        <textarea placeholder="現在の課題や相談内容をご記入ください"></textarea>
+        <textarea name="message" placeholder="現在の課題や相談内容をご記入ください"></textarea>
       </div>
-      <button class="submit-btn">無料相談を申し込む →</button>
-    </div>
+      <button type="submit" class="submit-btn">無料相談を申し込む →</button>
+
+    </form>
+    <!-- ▲ Formspree対応フォームここまで -->
+
   </div>
 </section>
 
